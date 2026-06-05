@@ -5,6 +5,8 @@ In pytest, each individual test is a python function that starts with `test`.
 
 # Import your library for testing
 from cdstemplate import word_count
+from cdstemplate.corpus_counter_script import generate_word_cloud
+import pytest
 
 
 def test_tokenize_document():
@@ -106,3 +108,20 @@ def test_corpus_counter_save_csv(tmp_path):
     assert my_csv.is_file()
     expected_csv = "token,count\na,2\nb,1\nc,1\nx,1\ny,1\nz,1\n"
     assert my_csv.read_text() == expected_csv
+
+
+def test_generate_word_cloud_creates_file(tmp_path):
+    """Tests that the function successfully creates an image file."""
+    fake_counts = {"bird": 50, "flu": 30, "migration": 20}
+    output_file = tmp_path / "test_cloud.png"
+
+    generate_word_cloud(fake_counts, output_file)
+
+    assert output_file.exists()
+    assert output_file.is_file()
+
+
+def test_generate_word_cloud_empty_dict():
+    """Tests the edge case where an empty dictionary is provided."""
+    with pytest.raises(ValueError):
+        generate_word_cloud({}, "dummy_path.png")

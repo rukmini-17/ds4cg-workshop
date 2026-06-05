@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 You should also add project tags for each release in Github, see [Managing releases in a repository](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
 ## [Unreleased]
-
+### Added
+- Added a word cloud generation function and corresponding unit tests
+- Added `wordcloud` to project dependencies
+- Added a demonstration of the word cloud generator to the prototype notebook
 
 ## [2.1.0] - 2025-06-09
 ### Changed
