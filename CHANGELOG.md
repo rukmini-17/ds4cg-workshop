@@ -10,6 +10,7 @@ You should also add project tags for each release in Github, see [Managing relea
 ### Added
 - Added a word cloud generation function and corresponding unit tests
 - Added `wordcloud` to project dependencies
+- Added a demonstration of the word cloud generator to the prototype notebook
 
 ## [2.1.0] - 2025-06-09
 ### Changed
