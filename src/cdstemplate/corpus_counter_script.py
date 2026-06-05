@@ -6,11 +6,28 @@ writes the corpus counts to a user-specified CSV file
 import argparse
 import logging
 from pathlib import Path
+from wordcloud import WordCloud
 
 # Import the code from this project needed for this script
 from cdstemplate import word_count, utils
 
 logger = logging.getLogger(__name__)
+
+
+def generate_word_cloud(word_counts: dict, output_path: str | Path):
+    """Generates and saves a word cloud image from a dictionary of word counts."""
+    if not word_counts:
+        raise ValueError("Word count dictionary cannot be empty.")
+
+    # Create the WordCloud object with a white background
+    wordcloud = WordCloud(width=800, height=400, background_color="white")
+
+    # Generate the cloud from the frequencies
+    wordcloud.generate_from_frequencies(word_counts)
+
+    # Save the image to the specified path
+    wordcloud.to_file(str(output_path))
+    logging.info(f"Word cloud successfully saved to {output_path}")
 
 
 def main_cli():
