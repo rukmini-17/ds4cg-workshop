@@ -7,7 +7,6 @@ In pytest, each individual test is a python function that starts with `test`.
 from cdstemplate import word_count
 from cdstemplate.corpus_counter_script import generate_word_cloud
 import pytest
-from pathlib import Path
 
 
 def test_tokenize_document():
